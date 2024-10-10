@@ -25,12 +25,12 @@ public:
     }
 
     // parameter constructor
-    Chair(int l) 
+    Chair(int l, double pricesArr[SIZE]) 
     {
         prices = new double[SIZE];
         legs = l;
         for (int i = 0; i < SIZE; i++)
-            prices[i] = 0;
+            prices[i] = pricesArr[i];
     }
 
     // setters and getters
@@ -67,13 +67,13 @@ public:
 
 
 int main() {
+    srand(time(0));   // seed for random number
     cout << fixed << setprecision(2);
 
     //creating pointer to first chair object
     Chair *chairPtr = new Chair;
-    chairPtr->setLegs(4);
-    chairPtr->setPrices(121.21, 232.32, 414.14);
     chairPtr->print();
+    delete chairPtr;
 
     //creating dynamic chair object with constructor
     Chair *livingChair = new Chair(3);
